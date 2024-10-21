@@ -1,0 +1,29 @@
+def selection_sort(arr):
+    n = len(arr)
+    print(f"Initial array: {arr}\n")
+    
+    for i in range(n):
+        min_idx = i
+        print(f"Step {i + 1}:")
+        print(f"Assume index {i} ({arr[i]}) is the minimum")
+        
+        # Find the minimum element in unsorted portion
+        for j in range(i + 1, n):
+            if arr[j] < arr[min_idx]:
+                print(f"Found new minimum {arr[j]} at index {j}")
+                min_idx = j
+        
+        # Swap the found minimum element with the first element
+        if min_idx != i:
+            print(f"Swapping {arr[i]} and {arr[min_idx]}")
+        else:
+            print(f"No need to swap, {arr[i]} is already the minimum")
+        
+        arr[i], arr[min_idx] = arr[min_idx], arr[i]
+        print(f"Array after step {i + 1}: {arr}\n")
+    
+    print(f"Sorted array: {arr}")
+
+# Test the function
+arr = [64, 25, 12, 22, 11]
+selection_sort(arr)
