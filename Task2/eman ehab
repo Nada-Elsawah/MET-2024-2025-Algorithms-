@@ -1,0 +1,60 @@
+import itertools
+
+
+conflicts = [
+    {"sub_id": 100, "Conflict_sub_id": 200, "NumOfInterection": 30},
+    {"sub_id": 100, "Conflict_sub_id": 300, "NumOfInterection": 15},
+    {"sub_id": 200, "Conflict_sub_id": 300, "NumOfInterection": 20},
+]
+
+levels = [
+    {"sub_id": 100, "level": 1},
+    {"sub_id": 200, "level": 2},
+    {"sub_id": 300, "level": 3},
+]
+
+
+level_mapping = {}
+for level in levels:
+    if level["level"] not in level_mapping:
+        level_mapping[level["level"]] = []
+    level_mapping[level["level"]].append(level["sub_id"])
+
+
+patterns = [
+    [1, 2, 3],  
+    [3, 2, 1],  
+]
+
+
+def calculate_cost(order):
+    total_cost = 0
+    for conflict in conflicts:
+        sub1_index = order.index(conflict["sub_id"])
+        sub2_index = order.index(conflict["Conflict_sub_id"])
+        
+        if abs(sub1_index - sub2_index) == 1: 
+            total_cost += conflict["NumOfInterection"]
+    return total_cost
+
+
+best_order = None
+min_cost = float('inf')
+
+for pattern in patterns:
+
+    subjects = []
+    for level in pattern:
+        subjects.extend(level_mapping[level])
+    permutations = itertools.permutations(subjects)
+
+   
+    for perm in permutations:
+        cost = calculate_cost(perm)
+        if cost < min_cost:
+            min_cost = cost
+            best_order = perm
+
+
+print("best order", best_order)
+print("Final cost:", min_cost)
