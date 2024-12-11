@@ -1,0 +1,59 @@
+import itertools
+import numpy as np
+
+conflict_table = [
+    {'sub_id': 100, 'Conflict_sub_id': 200, 'NumOfInterection': 30},
+    {'sub_id': 100, 'Conflict_sub_id': 300, 'NumOfInterection': 15},
+    {'sub_id': 200, 'Conflict_sub_id': 300, 'NumOfInterection': 20}
+]
+
+subject_levels = [
+    {'sub_id': 100, 'level': 1},
+    {'sub_id': 200, 'level': 2},
+    {'sub_id': 300, 'level': 3}
+]
+
+subjects_per_level = 6
+
+def calculate_final_cost(schedule, conflict_table):
+    cost = 0
+    for conflict in conflict_table:
+        sub1_position = schedule.index(conflict['sub_id'])
+        sub2_position = schedule.index(conflict['Conflict_sub_id'])
+        if abs(sub1_position - sub2_position) <= 1:  
+            cost += conflict['NumOfInterection']
+    return cost
+
+def divide_subjects_by_levels(subject_levels):
+    levels = {}
+    for subject in subject_levels:
+        level = subject['level']
+        if level not in levels:
+            levels[level] = []
+        levels[level].append(subject['sub_id'])
+    return levels
+
+def find_best_schedule(levels, conflict_table):
+    all_combinations = list(itertools.permutations(
+        levels[1] + levels[2] + levels[3]
+    ))
+
+    best_schedule = None
+    minimum_cost = float('inf')
+
+    for schedule in all_combinations:
+        cost = calculate_final_cost(schedule, conflict_table)
+        if cost < minimum_cost:
+            minimum_cost = cost
+            best_schedule = schedule
+
+    return best_schedule, minimum_cost
+
+levels = divide_subjects_by_levels(subject_levels)
+
+best_schedule, minimum_cost = find_best_schedule(levels, conflict_table)
+
+print("The best order:", best_schedule)
+print("minimum cost", minimum_cost)
+#khaled elnabawy
+#سكشن 2
