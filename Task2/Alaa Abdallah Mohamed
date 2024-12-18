@@ -1,0 +1,79 @@
+from itertools import permutations
+
+# Input Data
+conflict_table = [
+    {'NumOfInterection': 30, 'Conflict_sub_id': 200, 'sub_id': 100},
+    {'NumOfInterection': 15, 'Conflict_sub_id': 300, 'sub_id': 100}
+]
+
+study_levels = [
+    {'sub_id': 100, 'level': 1},
+    {'sub_id': 200, 'level': 2},
+    {'sub_id': 300, 'level': 3}
+]
+
+# Define patterns for study levels
+patterns = [
+    [1, 2, 3],  # Pattern 1: Level 1 -> Level 2 -> Level 3
+    [3, 1, 2],  # Pattern 2: Level 3 -> Level 1 -> Level 2
+    [2, 3, 1]   # Example of other level patterns
+]
+
+# Generate all permutations of the levels (6 possibilities)
+possible_patterns = list(permutations([1, 2, 3]))
+
+
+def get_courses_by_level(level):
+    """Get all courses belonging to a specific level."""
+    return [course['sub_id'] for course in study_levels if course['level'] == level]
+
+
+def calculate_conflict_cost(schedule):
+    """
+    Calculate the total conflict cost for a given schedule.
+    The cost is based on consecutive days.
+    """
+    total_cost = 0
+    
+    # Check conflicts between consecutive courses in the schedule
+    for i in range(len(schedule) - 1):
+        course_1 = schedule[i]
+        course_2 = schedule[i + 1]
+        
+        # Look for conflicts in the conflict table
+        for conflict in conflict_table:
+            if (conflict['sub_id'] == course_1 and conflict['Conflict_sub_id'] == course_2) or \
+               (conflict['sub_id'] == course_2 and conflict['Conflict_sub_id'] == course_1):
+                total_cost += conflict['NumOfInterection']
+                
+    return total_cost
+
+
+def find_best_schedule():
+    """Find the best schedule that minimizes the conflict cost."""
+    best_schedule = None
+    minimum_cost = float('inf')
+    
+    # Generate all course schedules for each pattern
+    for pattern in possible_patterns:
+        current_schedule = []
+        
+        # Get courses based on the current pattern
+        for level in pattern:
+            current_schedule.extend(get_courses_by_level(level))
+        
+        # Calculate the conflict cost for the current schedule
+        cost = calculate_conflict_cost(current_schedule)
+        
+        # Update the best schedule if a lower cost is found
+        if cost < minimum_cost:
+            minimum_cost = cost
+            best_schedule = current_schedule
+    
+    return best_schedule, minimum_cost
+
+
+# Main Execution
+best_schedule, minimum_cost = find_best_schedule()
+print("Best Course Schedule:", best_schedule)
+print("Minimum Conflict Cost:", minimum_cost)
