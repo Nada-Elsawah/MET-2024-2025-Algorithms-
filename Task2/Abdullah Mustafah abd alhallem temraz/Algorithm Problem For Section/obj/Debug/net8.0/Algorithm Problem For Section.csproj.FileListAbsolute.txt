@@ -1,0 +1,14 @@
+D:\متطلبات اجتياز كورس ال .NET\Algorithm Problem For Section\Algorithm Problem For Section\bin\Debug\net8.0\Algorithm Problem For Section.exe
+D:\متطلبات اجتياز كورس ال .NET\Algorithm Problem For Section\Algorithm Problem For Section\bin\Debug\net8.0\Algorithm Problem For Section.deps.json
+D:\متطلبات اجتياز كورس ال .NET\Algorithm Problem For Section\Algorithm Problem For Section\bin\Debug\net8.0\Algorithm Problem For Section.runtimeconfig.json
+D:\متطلبات اجتياز كورس ال .NET\Algorithm Problem For Section\Algorithm Problem For Section\bin\Debug\net8.0\Algorithm Problem For Section.dll
+D:\متطلبات اجتياز كورس ال .NET\Algorithm Problem For Section\Algorithm Problem For Section\bin\Debug\net8.0\Algorithm Problem For Section.pdb
+D:\متطلبات اجتياز كورس ال .NET\Algorithm Problem For Section\Algorithm Problem For Section\obj\Debug\net8.0\Algorithm Problem For Section.GeneratedMSBuildEditorConfig.editorconfig
+D:\متطلبات اجتياز كورس ال .NET\Algorithm Problem For Section\Algorithm Problem For Section\obj\Debug\net8.0\Algorithm Problem For Section.AssemblyInfoInputs.cache
+D:\متطلبات اجتياز كورس ال .NET\Algorithm Problem For Section\Algorithm Problem For Section\obj\Debug\net8.0\Algorithm Problem For Section.AssemblyInfo.cs
+D:\متطلبات اجتياز كورس ال .NET\Algorithm Problem For Section\Algorithm Problem For Section\obj\Debug\net8.0\Algorithm Problem For Section.csproj.CoreCompileInputs.cache
+D:\متطلبات اجتياز كورس ال .NET\Algorithm Problem For Section\Algorithm Problem For Section\obj\Debug\net8.0\Algorithm Problem For Section.dll
+D:\متطلبات اجتياز كورس ال .NET\Algorithm Problem For Section\Algorithm Problem For Section\obj\Debug\net8.0\refint\Algorithm Problem For Section.dll
+D:\متطلبات اجتياز كورس ال .NET\Algorithm Problem For Section\Algorithm Problem For Section\obj\Debug\net8.0\Algorithm Problem For Section.pdb
+D:\متطلبات اجتياز كورس ال .NET\Algorithm Problem For Section\Algorithm Problem For Section\obj\Debug\net8.0\Algorithm Problem For Section.genruntimeconfig.cache
+D:\متطلبات اجتياز كورس ال .NET\Algorithm Problem For Section\Algorithm Problem For Section\obj\Debug\net8.0\ref\Algorithm Problem For Section.dll
