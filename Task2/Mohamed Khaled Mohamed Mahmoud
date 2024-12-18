@@ -1,0 +1,36 @@
+import itertools
+
+conflict_table = [
+    {"sub_id": 100, "conflict_sub_id": 200, "NumOfInteraction": 30},
+    {"sub_id": 100, "conflict_sub_id": 300, "NumOfInteraction": 15},
+]
+
+level_table = [
+    {"sub_id": 100, "level": 1},
+    {"sub_id": 200, "level": 2},
+    {"sub_id": 300, "level": 3},
+]
+
+def calculate_cost(order, conflict_table):
+    cost = 0
+    for conflict in conflict_table:
+        sub1_index = order.index(conflict["sub_id"])
+        sub2_index = order.index(conflict["conflict_sub_id"])
+        days_difference = abs(sub1_index - sub2_index)
+        cost += conflict["NumOfInteraction"] * days_difference
+    return cost
+
+subjects = [sub["sub_id"] for sub in level_table]
+all_possible_orders = list(itertools.permutations(subjects))
+
+best_order = None
+min_cost = float('inf')
+
+for order in all_possible_orders:
+    cost = calculate_cost(order, conflict_table)
+    if cost < min_cost:
+        min_cost = cost
+        best_order = order
+
+print("أفضل ترتيب:", best_order)
+print("التكلفة الأقل:", min_cost)
